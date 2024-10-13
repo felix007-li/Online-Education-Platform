@@ -1,8 +1,8 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { UserModule } from '@/modules/user/user.module';
-
-
+import { AppController } from 'app.controller';
+import { AppService } from 'app.service';
 @Module({
     imports: [
         TypeOrmModule.forRoot({
@@ -12,15 +12,15 @@ import { UserModule } from '@/modules/user/user.module';
             username: 'root',
             password: 'P@ssw0rd',
             database: 'oep-server',
-            entities: ['./modules/**/*.entity{.ts,.js}'],
+            entities: [`${__dirname}/../modules/**/*.entity{.ts,.js}`],
             logging: true,
             synchronize: true,
             autoLoadEntities: true,
         }),
         UserModule
     ],
-    controllers: [],
-    providers: []
+    controllers: [AppController],
+    providers: [AppService]
 })
 
 export class AppModule {}
