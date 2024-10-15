@@ -27,7 +27,7 @@ export class AppController {
 
     @Get('/update')
     async update(): Promise<boolean> {
-        return await this.userService.update(
+        return await this.userService.updateUserInfo(
             'bdc7fcbe-1c1b-4061-b7f2-e480e7428cf4',
             {
                 name: 'name1111111'

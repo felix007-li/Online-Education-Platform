@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Result {
+  code: Int!
+  message: String
+  data: String
+}
+
+type UserType {
+  id: String!
+
+  """nickname"""
+  name: String!
+
+  """description"""
+  desc: String!
+
+  """tel"""
+  tel: String!
+
+  """avatar"""
+  avatar: String
+}
+
+type Query {
+  """get user by id"""
+  find(id: String!): UserType!
+}
+
+type Mutation {
+  """add new user"""
+  create(params: UserInput!): Boolean!
+
+  """delete an user"""
+  del(id: String!): Boolean!
+
+  """update an user"""
+  updateUserInfo(id: String!, params: UserInput!): Result!
+}
+
+input UserInput {
+  """nickname"""
+  name: String!
+
+  """description"""
+  desc: String!
+
+  """telephone"""
+  tel: String!
+}

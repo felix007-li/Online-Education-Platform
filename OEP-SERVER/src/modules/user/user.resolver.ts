@@ -1,20 +1,27 @@
 import { SUCCESS, UPDATE_ERROR } from '@/common/constants/code';
 import { UserService } from './user.service';
-import { User } from './models/user.entity';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { UserInput } from './dto/user-input.type';
+import { Result } from '@/common/dto/result.type';
+import { UserType } from './dto/user.type';
 
+@Resolver()
 export class UserResolver {
     constructor(private readonly userService: UserService) {}
 
-    async create(params): Promise<boolean> {
+    @Mutation(() => Boolean, { description: 'add new user'})
+    async create(@Args('params') params: UserInput): Promise<boolean> {
         return await this.userService.create(params);
     }
 
-    async del(id: string): Promise<boolean> {
+    @Mutation(() => Boolean, { description: 'delete an user'})
+    async del(@Args('id') id: string): Promise<boolean> {
         return await this.userService.del(id);
     }
 
-    async updateUserInfo(id: string, params: any): Promise<any> {
-        const res = await this.userService.update(id, params);
+    @Mutation(() => Result, { description: 'update an user' })
+    async updateUserInfo(@Args('id') id: string, @Args('params') params: UserInput): Promise<Result> {
+        const res = await this.userService.updateUserInfo(id, params);
         if (res) {
             return {
                 code: SUCCESS,
@@ -27,7 +34,8 @@ export class UserResolver {
         }
     }
 
-    async getUserInfo(id: string): Promise<User> {
+    @Query(() => UserType, { description: 'get user by id' })
+    async find(@Args('id') id: string): Promise<UserType> {
         return await this.userService.find(id);
     }
  }
