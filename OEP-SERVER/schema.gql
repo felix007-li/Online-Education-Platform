@@ -24,9 +24,32 @@ type UserType {
   avatar: String
 }
 
+type OSSType {
+  """expiry date"""
+  expire: String!
+
+  """strategy"""
+  policy: String!
+
+  """signature"""
+  signature: String!
+
+  """key"""
+  accessId: String!
+
+  """host"""
+  host: String!
+
+  """folder"""
+  dir: String!
+}
+
 type Query {
   """get user by id"""
   find(id: String!): UserType!
+
+  """get oss info"""
+  getOSSInfo: OSSType!
 }
 
 type Mutation {

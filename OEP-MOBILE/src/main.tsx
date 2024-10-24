@@ -1,14 +1,19 @@
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import './index.css';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
+import { ConfigProvider } from 'antd-mobile';
 import { client } from './utils/apollo.js';
 import Login from './containers/Login/index.js';
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <ApolloProvider client={client}>
-    <Routes>
-      <Route path="/login" element={<Login />} />
-    </Routes>
-  </ApolloProvider>,
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <ConfigProvider>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </ApolloProvider>
+  </ConfigProvider>,
 );
