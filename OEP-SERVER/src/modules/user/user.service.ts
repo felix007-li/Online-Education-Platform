@@ -46,5 +46,25 @@ export class UserService {
         return res;
     }
 
+    // search an user by tel
+    async findByTel(tel: string): Promise<User> {
+        const res = await this.UserRepository.findOne({
+            where: {
+                tel,
+            },
+        });
+        return res;
+    }
 
+     // update code for an user
+     async updateCode(id: string, code: string): Promise<boolean> {
+        const res = await this.UserRepository.update(id, {
+            code,
+            codeCreateTimeAt: new Date(),
+        });
+        if (res.affected > 0) {
+            return true;
+        }
+        return false
+    }
 }

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import style from './index.module.less';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { LoginFormPage, ProFormText } from '@ant-design/pro-components';
+import { LoginFormPage, ProFormCaptcha, ProFormText } from '@ant-design/pro-components';
 import { message, Tabs } from 'antd';
-import { MobileOutlined } from '@ant-design/icons';
+import { LockOutlined, MobileOutlined } from '@ant-design/icons';
 import { useTitle } from '../../hooks';
 import { useMutation } from '@apollo/client';
  
@@ -66,6 +66,36 @@ interface IValue {
                                 message: 'Mobile number error'
                             }
                         ]}
+                    />
+                    <ProFormCaptcha
+                        fieldProps={{
+                        size: 'large',
+                        prefix: <LockOutlined className="prefixIcon" />,
+                        }}
+                        captchaProps={{
+                        size: 'large',
+                        }}
+                        placeholder="Please enter verication code"
+                        phoneName="tel"
+                        name="code"
+                        rules={[
+                        {
+                            required: true,
+                            message: 'Please enter verication code！',
+                        },
+                        ]}
+                        onGetCaptcha={async (tel: string) => {
+                        const res = await run({
+                            variables: {
+                            tel,
+                            },
+                        });
+                        if (res.data.sendCodeMsg.code === 200) {
+                            message.success(res.data.sendCodeMsg.message);
+                        } else {
+                            message.error(res.data.sendCodeMsg.message);
+                        }
+                        }}
                     />
                 </>
             </LoginFormPage>
