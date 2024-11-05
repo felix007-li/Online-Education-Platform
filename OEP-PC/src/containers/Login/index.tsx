@@ -6,17 +6,20 @@ import { message, Tabs } from 'antd';
 import { LockOutlined, MobileOutlined } from '@ant-design/icons';
 import { useTitle } from '../../hooks';
 import { useMutation } from '@apollo/client';
+import { LOGIN } from '@/graphql/auth';
+import { AUTH_TOKEN } from '@/utils/constants';
  
 interface IValue {
     tel: string;
     code: string;
+    autoLogin: boolean
 }
  /**
  *login component
  */
  const Login = () => {
     const [state, setState] = useState();
-    // const [login] = useMutation(LOGIN);
+    const [login] = useMutation(LOGIN);
     const [params] = useSearchParams();
     const nav = useNavigate();
     useTitle('Login');
@@ -26,9 +29,18 @@ interface IValue {
             variables: values,
         });
         if (res.data.login.code === 200) {
+            if（values.autoLogin) {
+                sessionStorage.setItem(AUTH_TOKEN, '');
+                localStorage.setItem(AUTH_TOKEN, res.data.login.data);
+            } else {
+                localStorage.setItem(AUTH_TOKEN, '');
+                sessionStorage.setItem(AUTH_TOKEN, res.data.login.data);
+            }
             message.success(res.data.login.message);
             nav(params.get('orgUrl') || '/')
+            return;
         }
+        message.error(res.data.login.message);
     };
 
     useEffect(() => {
