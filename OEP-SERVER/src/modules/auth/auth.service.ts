@@ -18,7 +18,7 @@ export class AuthService {
 
         if (user) {
             const diffTime = dayjs().diff(dayjs(user.codeCreateTimeAt))
-            if (diffTime < 60 * 1000) {
+            if (diffTime < 60 * 1000) { // code time less than one minute
                 return {
                     code: CODE_NOT_EXPIRE,
                     message: 'code is not expired'
