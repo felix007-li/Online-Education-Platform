@@ -12,7 +12,10 @@ module.exports = {
       'react-hooks/exhaustive-deps': 1,
       'jsx-a11y/anchor-is-valid': 0,
       'jsx-a11y/click-events-have-key-events': 0,
-      'jsx-a11y/no-static-element-interactions': 0
+      'jsx-a11y/no-static-element-interactions': 0,
+      'indent': 'off',
+      "react/jsx-indent": "off",
+      "react/jsx-indent-props": "off"
     },
     parser: require.resolve('@typescript-eslint/parser'),
     parserOptions: {

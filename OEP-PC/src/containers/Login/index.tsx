@@ -1,23 +1,24 @@
 import { useState, useEffect } from 'react';
-import style from './index.module.less';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { LoginFormPage, ProFormCaptcha, ProFormText } from '@ant-design/pro-components';
 import { message, Tabs } from 'antd';
 import { LockOutlined, MobileOutlined } from '@ant-design/icons';
-import { useTitle } from '../../hooks';
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '@/graphql/auth';
+import { LOGIN, SEND_CODE_MSG } from '@/graphql/auth';
 import { AUTH_TOKEN } from '@/utils/constants';
- 
+import { useTitle } from '../../hooks';
+import style from './index.module.less';
 interface IValue {
     tel: string;
     code: string;
     autoLogin: boolean
 }
+
  /**
  *login component
  */
  const Login = () => {
+    const [run] = useMutation(SEND_CODE_MSG)
     const [state, setState] = useState();
     const [login] = useMutation(LOGIN);
     const [params] = useSearchParams();
@@ -29,7 +30,7 @@ interface IValue {
             variables: values,
         });
         if (res.data.login.code === 200) {
-            if（values.autoLogin) {
+            if (values.autoLogin) {
                 sessionStorage.setItem(AUTH_TOKEN, '');
                 localStorage.setItem(AUTH_TOKEN, res.data.login.data);
             } else {
