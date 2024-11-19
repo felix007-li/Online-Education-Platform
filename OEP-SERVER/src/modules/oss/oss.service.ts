@@ -13,8 +13,8 @@ export class OSSService {
    */
   async getSignature(): Promise<OSSType> {
     const config = {
-      accessKeyId: 'LTAI5t6fHNayTrTmUdA5io8W',
-      accessKeySecret: 'vk7BLCXfediNOt6ecBufB7CfF9t8Mx',
+      accessKeyId: process.env.ACCESS_KEY,
+      accessKeySecret: process.env.ACCESS_KEY_SECRET,
       bucket: 'oep-assets',
       dir: 'images/',
     };
