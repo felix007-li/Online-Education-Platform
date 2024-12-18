@@ -9,7 +9,7 @@ const Page404 = () => {
     title="404"
     subTitle="The page is not exist"
     extra={<Button type="primary" href="/">Back to home</Button>}
-  />
-}
+    />;
+};
 
 export default Page404;

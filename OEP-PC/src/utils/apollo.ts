@@ -9,14 +9,12 @@ const httpLink = createHttpLink({
   uri,
 });
 
-const authLink = setContext((_, { headers }) => {
-    return {
-      headers: {
-        ...headers,
-        orgId: ''
-      },
-    };
-  });
+const authLink = setContext((_, { headers }) => ({
+  headers: {
+    ...headers,
+    orgId: '',
+  },
+}));
 
 const errorLink = onError(({
   graphQLErrors,
