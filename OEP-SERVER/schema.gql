@@ -62,7 +62,7 @@ type Mutation {
   """update an user"""
   updateUserInfo(id: String!, params: UserInput!): Result!
 
-  """Send code error"""
+  """Send shot message code"""
   sendCodeMsg(tel: String!): Result!
 
   """Login"""

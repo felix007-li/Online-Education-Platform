@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import * as dayjs from 'dayjs';
-import * as OSS from 'ali-oss';
-import { OSSType } from './dto/oss.type';
+import { Injectable } from "@nestjs/common";
+import * as dayjs from "dayjs";
+import * as OSS from "ali-oss";
+import { OSSType } from "./dto/oss.type";
 
 @Injectable()
 export class OSSService {
@@ -15,8 +15,8 @@ export class OSSService {
     const config = {
       accessKeyId: process.env.ACCESS_KEY,
       accessKeySecret: process.env.ACCESS_KEY_SECRET,
-      bucket: 'oep-assets',
-      dir: 'images/',
+      bucket: "oep-assets",
+      dir: "images/",
     };
 
     const client = new OSS(config);
@@ -26,7 +26,7 @@ export class OSSService {
     const policy = {
       expiration: date.toISOString(), // expiry date
       conditions: [
-        ['content-length-range', 0, 1048576000], // limidation of file size
+        ["content-length-range", 0, 1048576000], // limidation of file size
       ],
     };
 
@@ -34,17 +34,17 @@ export class OSSService {
     const host = `https://${config.bucket}.${
       (await client.getBucketLocation()).location
     }.aliyuncs.com`.toString();
-    console.log("host:", host)
+    console.log("host:", host);
     // signature
     const formData = await client.calculatePostSignature(policy);
     // return parameters
     const params = {
-      expire: dayjs().add(1, 'days').unix().toString(),
+      expire: dayjs().add(1, "days").unix().toString(),
       policy: formData.policy,
       signature: formData.Signature,
       accessId: formData.OSSAccessKeyId,
       host,
-      dir: 'images/',
+      dir: "images/",
     };
 
     return params;

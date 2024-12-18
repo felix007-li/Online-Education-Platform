@@ -6,6 +6,3 @@ export const CODE_NOT_EXIST = 10004;
 export const CODE_EXPIRE = 10005;
 export const LOGIN_ERROR = 10006;
 export const CODE_SEND_ERROR = 10007;
-
-
-
