@@ -2,6 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { message } from 'antd';
 import { onError } from '@apollo/client/link/error'; // import onError
+import { AUTH_TOKEN } from './constants';
 
 const uri = '/graphql';
 
@@ -9,12 +10,16 @@ const httpLink = createHttpLink({
   uri,
 });
 
-const authLink = setContext((_, { headers }) => ({
-  headers: {
-    ...headers,
-    orgId: '',
-  },
-}));
+const authLink = setContext((_, { headers }) => {
+  const token = sessionStorage.getItem(AUTH_TOKEN) || localStorage.getItem(AUTH_TOKEN);
+  return {
+    headers: {
+      ...headers,
+      Authorization: token ? `Bearer ${token}` : '',
+      orgId: '',
+    },
+  };
+});
 
 const errorLink = onError(({
   graphQLErrors,

@@ -29,10 +29,10 @@ module.exports = {
         'alias': {
           'map': [
             [
-              '@', './src' // @ config
+              '@', './src' // @ config // alias 
             ]
           ],
-          'extensions': ['.ts', '.tsx']
+          'extensions': ['.ts', '.tsx'] 
         }
       }
     }

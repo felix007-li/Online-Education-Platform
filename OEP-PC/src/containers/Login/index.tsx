@@ -1,7 +1,9 @@
 /* eslint-disable import/extensions */
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { LoginFormPage, ProFormCaptcha, ProFormText } from '@ant-design/pro-components';
+import {
+  LoginFormPage, ProFormCaptcha, ProFormCheckbox, ProFormText,
+} from '@ant-design/pro-components';
 import { message, Tabs } from 'antd';
 import { LockOutlined, MobileOutlined } from '@ant-design/icons';
 import { useMutation } from '@apollo/client';
@@ -113,6 +115,15 @@ const Login = () => {
                         }}
                     />
                 </>
+                <div
+                  style={{
+                    marginBlockEnd: 24,
+                  }}
+                >
+                  <ProFormCheckbox noStyle name="autoLogin">
+                    自动登录（万能验证码 1024）
+                  </ProFormCheckbox>
+                </div>
             </LoginFormPage>
         </div>
   );
