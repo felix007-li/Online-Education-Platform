@@ -25,7 +25,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
       // inject: [ConfigService],
       secret: `${process.env.JWT_SECRET}`,
       signOptions: {
-        expiresIn: 60 * 60 * 24 * 7 + "s",
+        expiresIn: 60 * 60 * 24 * 7 * 4 + "s",
       },
     }),
     // ConfigModule,

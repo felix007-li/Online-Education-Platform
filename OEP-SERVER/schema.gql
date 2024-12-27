@@ -45,6 +45,9 @@ type OSSType {
 }
 
 type Query {
+  """Query user info by id"""
+  getUserInfo: UserType!
+
   """get user by id"""
   find(id: String!): UserType!
 
