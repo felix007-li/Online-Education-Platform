@@ -11,7 +11,7 @@ const Org = () => {
   const {
     loading, data, page, refetch,
   } = useOrganizations();
-  const [delHandler, delLoading] = useDeleteOrg();
+//   const [delHandler, delLoading] = useDeleteOrg();
 
   const [showEdit, setShowEdit] = useState(false);
   const [curId, setCurId] = useState('');

@@ -27,12 +27,12 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
     hideInMenu: false,
     icon: <HomeOutlined />,
   },
-  [ROUTE_KEY.ORG]: {
-    path: 'org',
-    name: 'Store management',
-    hideInMenu: false,
-    icon: <ShopOutlined />,
-  },
+  // [ROUTE_KEY.ORG]: {
+  //   path: 'org',
+  //   name: 'Store management',
+  //   hideInMenu: false,
+  //   icon: <ShopOutlined />,
+  // },
   [ROUTE_KEY.PAGE_404]:
     {
       path: '*',

@@ -23,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             <Route path="/" element={<Layout />}>
               {routes.map((item) => {
                 const Component = ROUTE_COMPONENT[item.key];
+                console.log("component::", Component)
                 return (
                   <Route
                     path={item.path}

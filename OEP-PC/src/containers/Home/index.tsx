@@ -1,3 +1,4 @@
+import React, { FC } from 'react';
 import { useState, useEffect } from 'react';
 
 import style from './index.module.less';
@@ -6,11 +7,10 @@ import { useUserContext } from '@/hooks/userHooks';
 /**
 *
 */
-const Home = ({}) => {
+const Home: FC = () => {
   const [state, setState] = useState();
 
   const { store } = useUserContext();
-  console.log('user info in home page::', store);
 
   useEffect(() => {
     console.log(state, setState);

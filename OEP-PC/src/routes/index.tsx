@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import Home from '@/containers/Home';
 import Org from '@/containers/Org';
 import My from '@/containers/My';

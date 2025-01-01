@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import { MenuDataItem, ProLayout } from '@ant-design/pro-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutlet } from 'react-router-dom';
 import { Space } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 import { useUserContext } from '@/hooks/userHooks';
@@ -17,7 +17,7 @@ const menuItemRender = (
 * Layout
 */
 const Layout = () => {
-  // const outlet = useOutlet();
+  const outlet = useOutlet();
   const { store } = useUserContext();
   const { go } = useGoTo();
   const nav = useNavigate();
@@ -28,9 +28,9 @@ const Layout = () => {
     nav('/login');
   };
 
-  // const goToOrg = () => {
-  //   go(ROUTE_KEY.ORG);
-  // };
+  const goToOrg = () => {
+    go(ROUTE_KEY.ORG);
+  };
 
   return (
     <ProLayout
@@ -58,9 +58,9 @@ const Layout = () => {
       }}
       menuItemRender={menuItemRender}
     >
-      {/* <div key={store.currentOrg}>
+      <div key={store.currentOrg}>
         {outlet}
-      </div> */}
+      </div>
     </ProLayout>
   );
 };

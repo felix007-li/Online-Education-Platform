@@ -9,6 +9,7 @@ import { LockOutlined, MobileOutlined } from '@ant-design/icons';
 import { useMutation } from '@apollo/client';
 import { LOGIN, SEND_CODE_MSG } from '@/graphql/auth';
 import { AUTH_TOKEN } from '@/utils/constants';
+import enUS from 'antd/locale/en_US';
 import { useTitle } from '../../hooks';
 import style from './index.module.less';
 
@@ -121,7 +122,8 @@ const Login = () => {
                   }}
                 >
                   <ProFormCheckbox noStyle name="autoLogin">
-                    自动登录（万能验证码 1024）
+                    {/* 自动登录（万能验证码 1024） */}
+                    I Agree to Privacy Policy
                   </ProFormCheckbox>
                 </div>
             </LoginFormPage>
