@@ -6,6 +6,6 @@ export class UserInput {
   name?: string;
   @Field({ description: "description" })
   desc: string;
-  @Field({ description: "telephone" })
-  tel: string;
+  @Field({ description: 'avatar'})
+  avatar?: string;
 }

@@ -79,6 +79,6 @@ input UserInput {
   """description"""
   desc: String!
 
-  """telephone"""
-  tel: String!
+  """avatar"""
+  avatar: String!
 }
