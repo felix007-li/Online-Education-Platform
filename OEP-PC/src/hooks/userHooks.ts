@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useQuery } from '@apollo/client';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { connectFactory, useAppContext } from '@/utils/contextFactory';
 import { GET_USER } from '@/graphql/user';
 import { IUser } from '@/utils/types';
-import { connectFactory, useAppContext } from '@/utils/contextFactory';
 
 const KEY = 'userInfo';
 const DEFAULT_VALUE = {};

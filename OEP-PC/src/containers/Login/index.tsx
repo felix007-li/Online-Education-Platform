@@ -12,6 +12,7 @@ import { AUTH_TOKEN } from '@/utils/constants';
 import enUS from 'antd/locale/en_US';
 import { useTitle } from '../../hooks';
 import style from './index.module.less';
+import { useUserContext } from '@/hooks/userHooks';
 
 interface IValue {
   tel: string;
@@ -26,6 +27,7 @@ const Login = () => {
   const [run] = useMutation(SEND_CODE_MSG);
   const [state, setState] = useState();
   const [login] = useMutation(LOGIN);
+  const { store } = useUserContext();
   const [params] = useSearchParams();
   const nav = useNavigate();
   useTitle('Login');
@@ -35,6 +37,7 @@ const Login = () => {
       variables: values,
     });
     if (res.data.login.code === 200) {
+      store.refetchHandler?.();
       if (values.autoLogin) {
         sessionStorage.setItem(AUTH_TOKEN, '');
         localStorage.setItem(AUTH_TOKEN, res.data.login.data);

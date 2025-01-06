@@ -6,9 +6,9 @@ import {
   Col, Row, message, Form,
 } from 'antd';
 import { useEffect, useRef } from 'react';
-import { useUserContext } from '@/hooks/userHooks';
+import { useGetUser, useUserContext } from '@/hooks/userHooks';
 import { UPDATE_USER } from '@/graphql/user';
-// import OSSImageUpload from '@/components/OSSImageUpload';
+import OSSImageUpload from '@/components/OssImageUpload';
 
 /**
 * personal information manager
@@ -16,6 +16,8 @@ import { UPDATE_USER } from '@/graphql/user';
 const My = () => {
   const formRef = useRef<ProFormInstance>();
   const { store } = useUserContext();
+//   const { store } = useGetUser()
+  console.log("my store::", store)
 
   const [updateUserInfo] = useMutation(UPDATE_USER);
 
@@ -43,6 +45,7 @@ const My = () => {
           },
         }}
         onFinish={async (values) => {
+          console.log("My values::", values)
           const res = await updateUserInfo({
             variables: {
               id: store.id,
@@ -53,6 +56,7 @@ const My = () => {
               },
             },
           });
+          console.log("My res::", res)
           if (res.data.updateUserInfo.code === 200) {
             store.refetchHandler?.();
             message.success(res.data.updateUserInfo.message);
@@ -81,9 +85,9 @@ const My = () => {
             />
           </Col>
           <Col>
-            {/* <Form.Item name="avatar">
+            <Form.Item name="avatar">
               <OSSImageUpload label="Change avatar" />
-            </Form.Item> */}
+            </Form.Item>
           </Col>
         </Row>
       </ProForm>
