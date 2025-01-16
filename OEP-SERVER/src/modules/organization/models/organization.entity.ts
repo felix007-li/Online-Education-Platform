@@ -11,20 +11,21 @@ import { Column, Entity, OneToMany } from 'typeorm';
 export class Organization extends CommonEntity {
   @Column({
     comment: 'license',
+    nullable: true,
   })
-  @IsNotEmpty()
+  // @IsNotEmpty()
   businessLicense: string;
 
   @Column({
     comment: 'identityCardFrontImg',
+    nullable: true,
   })
-  @IsNotEmpty()
   identityCardFrontImg: string;
 
   @Column({
     comment: 'identityCardBackImg',
+    nullable: true,
   })
-  @IsNotEmpty()
   identityCardBackImg: string;
 
   @Column({

@@ -24,7 +24,7 @@ export class CourseService {
       where: {
         id,
       },
-      relations: ['teachers'],
+    //   relations: ['teachers'],
     });
   }
 
@@ -57,7 +57,9 @@ export class CourseService {
       order: {
         createdAt: 'DESC',
       },
-      relations: ['org', 'teachers'],
+      relations: ['org'],
+
+    //   relations: ['org', 'teachers'],
     });
   }
 

@@ -45,6 +45,7 @@ export class OrganizationInput {
 
   @Field({
     description: 'license',
+    nullable: true,
   })
   businessLicense: string;
 

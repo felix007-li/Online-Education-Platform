@@ -50,21 +50,16 @@ export class AuthResover {
         message: "code is not exist",
       };
     }
-    if (dayjs().diff(dayjs(user.codeCreateTimeAt)) > 7 * 24 * 60 * 60 * 1000) {
+    if (dayjs().diff(dayjs(user.codeCreateTimeAt)) > 30 * 24 * 60 * 60 * 1000) {
       return {
         code: CODE_NOT_EXPIRE,
         message: "code is expired",
       };
     }
     if (user.code === code) {
-      console.log("user::", user);
-      console.log("secret::", `${process.env.JWT_SECRET}`);
-      console.log("host::", process.env.MYSQL_HOST);
-
       const token = this.jwtService.sign({
         id: user.id,
       });
-      console.log("token::", token);
       return {
         code: SUCCESS,
         message: "Login successfully!!!!",

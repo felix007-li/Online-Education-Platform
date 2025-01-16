@@ -171,7 +171,7 @@ type OrganizationType {
   deletedBy: String
 
   """license"""
-  businessLicense: String!
+  businessLicense: String
 
   """identityCardFrontImg"""
   identityCardFrontImg: String!
@@ -331,7 +331,7 @@ input OrganizationInput {
   address: String
 
   """license"""
-  businessLicense: String!
+  businessLicense: String
 
   """description"""
   description: String!
@@ -391,9 +391,6 @@ input PartialCourseInput {
 
   """reducibleTime"""
   reducibleTime: [ReducibleTimeInput!]
-
-  """teachers"""
-  teachers: [String!]
 }
 
 input ReducibleTimeInput {
