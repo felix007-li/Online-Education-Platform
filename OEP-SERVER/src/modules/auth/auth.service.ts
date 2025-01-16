@@ -26,7 +26,7 @@ export class AuthService {
     const user = await this.userService.findByTel(tel);
     if (user) {
       const diffTime = dayjs().diff(dayjs(user.codeCreateTimeAt));
-      if (diffTime < 7 * 24 * 60 * 60 * 1000) {
+      if (diffTime < 30 * 24 * 60 * 60 * 1000) {
         // don't send code less than one minute
         // code time less than one minute
         return {
@@ -38,7 +38,7 @@ export class AuthService {
 
     const code = getRandomCode();
     const sendSmsRequest = new $Dysmsapi.SendMessageToGlobeRequest({
-      from: "18338831230",
+      from: "18773124359",
       to: tel,
       type: "OTP",
       message: `{your login code is: ${code}, please login in a minute\"}`,
@@ -50,8 +50,7 @@ export class AuthService {
         sendSmsRequest,
         runtime
       );
-      console.log("sendRes: ", sendRes);
-      console.log("securet", process.env.JWT_SECRET);
+      
       if (sendRes.body.responseCode !== "OK") {
         return {
           code: CODE_SEND_ERROR,

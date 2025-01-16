@@ -10,6 +10,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 export class OrganizationType extends CommonType {
   @Field({
     description: 'license',
+    nullable: true,
   })
   businessLicense: string;
 

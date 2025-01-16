@@ -99,15 +99,15 @@ export class CourseResolver {
   async getCourses(
     @Args('page') page: PageInput,
     @CurUserId() userId: string,
-    @CurOrgId() orgId: string,
+    // @CurOrgId() orgId: string,
     @Args('name', { nullable: true }) name?: string,
   ): Promise<CourseResults> {
     const { pageNum, pageSize } = page;
     const where: FindOptionsWhere<Course> = {
       createdBy: userId,
-      org: {
-        id: orgId,
-      },
+    //   org: {
+    //     id: orgId,
+    //   },
     };
     if (name) {
       where.name = Like(`%${name}%`);

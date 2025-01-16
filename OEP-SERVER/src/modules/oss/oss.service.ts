@@ -34,7 +34,6 @@ export class OSSService {
     const host = `https://${config.bucket}.${
       (await client.getBucketLocation()).location
     }.aliyuncs.com`.toString();
-    console.log("host:", host);
     // signature
     const formData = await client.calculatePostSignature(policy);
     // return parameters

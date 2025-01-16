@@ -63,11 +63,11 @@ export class CourseInput {
   })
   reducibleTime: ReducibleTimeInput[];
 
-  @Field(() => [String], {
-    description: 'teachers',
-    nullable: true,
-  })
-  teachers: string[];
+//   @Field(() => [String], {
+//     description: 'teachers',
+//     nullable: true,
+//   })
+//   teachers: string[];
 }
 
 @InputType()
