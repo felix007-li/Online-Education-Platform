@@ -1,9 +1,9 @@
 import { PageContainer, ProList } from '@ant-design/pro-components';
 import { useState } from 'react';
 import { Button, Popconfirm, Tag } from 'antd';
-// import { DEFAULT_PAGE_SIZE } from '@/utils/constants';
-// import { useDeleteOrg, useOrganizations } from '@/services/org';
-// import EditOrg from './components/EditOrg';
+import { DEFAULT_PAGE_SIZE } from '@/utils/constants';
+import { useDeleteOrg, useOrganizations } from '@/services/org';
+import EditOrg from './components/EditOrg';
 
 import style from './index.module.less';
 
@@ -11,7 +11,7 @@ const Org = () => {
   const {
     loading, data, page, refetch,
   } = useOrganizations();
-//   const [delHandler, delLoading] = useDeleteOrg();
+  const [delHandler, delLoading] = useDeleteOrg();
 
   const [showEdit, setShowEdit] = useState(false);
   const [curId, setCurId] = useState('');
@@ -49,13 +49,13 @@ const Org = () => {
     key: item.id,
     subTitle: <div>{item.tags?.split(',').map((tag) => (<Tag key={tag} color="#5BD8A6">{tag}</Tag>))}</div>,
     actions: [
-      <Button type="link" onClick={() => editInfoHandler(item.id)}>编辑</Button>,
+      <Button type="link" onClick={() => editInfoHandler(item.id)}>Edit</Button>,
       <Popconfirm
         title="confirm"
         okButtonProps={{
           loading: delLoading,
         }}
-        description={`Are you sure to delete ${item.name} 吗？`}
+        description={`Are you sure to delete ${item.name}？`}
         onConfirm={() => delInfoHandler(item.id)}
       >
         <Button type="link">Delete</Button>
@@ -103,12 +103,12 @@ const Org = () => {
           }}
           dataSource={dataSource}
         />
-        {/* {showEdit && (
+        {showEdit && (
         <EditOrg
           id={curId}
           onClose={onCloseHandler}
         />
-        )} */}
+        )}
       </PageContainer>
     </div>
   );

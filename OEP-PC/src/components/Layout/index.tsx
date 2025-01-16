@@ -35,7 +35,7 @@ const Layout = () => {
   return (
     <ProLayout
       layout="mix"
-      siderWidth={200}
+      siderWidth={220}
       avatarProps={{
         src: store.avatar || null,
         title: store.name,

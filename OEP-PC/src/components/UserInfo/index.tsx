@@ -1,9 +1,9 @@
-import { Spin } from 'antd';
-import { connect, useGetUser } from '@/hooks/userHooks';
 import { IPropChild } from '@/utils/types';
+import { connect, useGetUser } from '@/hooks/userHooks';
+import { Spin } from 'antd';
 
 /**
-*
+* User Information
 */
 const UserInfo = ({ children }: IPropChild) => {
   const { loading } = useGetUser();

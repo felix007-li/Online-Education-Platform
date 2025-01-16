@@ -20,7 +20,7 @@ interface OSSUploadProps {
   value?: UploadFile[];
   label?: string;
   maxCount?: number;
-  imgCropAspect?: number; // 图片比例
+  imgCropAspect?: number;
   onChange?: (files: UploadFile[]) => void;
 }
 

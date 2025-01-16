@@ -17,7 +17,6 @@ const My = () => {
   const formRef = useRef<ProFormInstance>();
   const { store } = useUserContext();
 //   const { store } = useGetUser()
-  console.log("my store::", store)
 
   const [updateUserInfo] = useMutation(UPDATE_USER);
 
@@ -45,7 +44,6 @@ const My = () => {
           },
         }}
         onFinish={async (values) => {
-          console.log("My values::", values)
           const res = await updateUserInfo({
             variables: {
               id: store.id,
@@ -56,7 +54,6 @@ const My = () => {
               },
             },
           });
-          console.log("My res::", res)
           if (res.data.updateUserInfo.code === 200) {
             store.refetchHandler?.();
             message.success(res.data.updateUserInfo.message);
