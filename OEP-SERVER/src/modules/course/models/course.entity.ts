@@ -10,6 +10,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ReducibleTimeType } from '../dto/common.type';
+import { Card } from '@/modules/card/models/card.entity';
 
 /**
  * Course
@@ -89,4 +90,7 @@ export class Course extends CommonEntity {
     cascade: true,
   })
   org: Organization;
+
+  @OneToMany(() => Card, (org) => org.course)
+  cards: Card;
 }

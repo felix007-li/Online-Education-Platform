@@ -7,8 +7,8 @@ import { PlusOutlined } from '@ant-design/icons';
 import { useRef, useState } from 'react';
 import { getColumns } from './constants';
 import EditCourse from './components/EditCourse';
-// import OrderTime from './components/OrderTime';
-// import ConsumeCard from './components/ConsumeCard';
+import OrderTime from './components/OrderTime';
+import ConsumeCard from './components/ConsumeCard';
 
 /**
 * Current Courses
@@ -17,11 +17,11 @@ const Course = () => {
   const actionRef = useRef<ActionType>();
   const [curId, setCurId] = useState('');
 //   const { data, refetch } = useCourses();
-    const { refetch } = useCourses();
+  const { refetch } = useCourses();
 
   const [showInfo, setShowInfo] = useState(false);
-//   const [showOrderTime, setShowOrderTime] = useState(false);
-//   const [showCard, setShowCard] = useState(false);
+  const [showOrderTime, setShowOrderTime] = useState(false);
+  const [showCard, setShowCard] = useState(false);
 
   const onClickAddHandler = (id?: string) => {
     if (id) {
@@ -39,15 +39,15 @@ const Course = () => {
     }
   };
 
-//   const onOrderTimeHandler = (id: string) => {
-//     setCurId(id);
-//     setShowOrderTime(true);
-//   };
+  const onOrderTimeHandler = (id: string) => {
+    setCurId(id);
+    setShowOrderTime(true);
+  };
 
-//   const onCardHandler = (id: string) => {
-//     setCurId(id);
-//     setShowCard(true);
-//   };
+  const onCardHandler = (id: string) => {
+    setCurId(id);
+    setShowCard(true);
+  };
 
   return (
     <PageContainer header={{ title: 'Current Courses' }}>
@@ -56,8 +56,8 @@ const Course = () => {
         actionRef={actionRef}
         columns={getColumns({
           onEditHandler: onClickAddHandler,
-        //   onOrderTimeHandler,
-        //   onCardHandler,
+          onOrderTimeHandler,
+          onCardHandler,
         })}
         // dataSource={data}
         pagination={{
@@ -71,8 +71,8 @@ const Course = () => {
         request={refetch}
       />
       {showInfo && <EditCourse id={curId} onClose={closeAndRefetchHandler} />}
-      {/* {showOrderTime && <OrderTime id={curId} onClose={() => setShowOrderTime(false)} />} */}
-      {/* {showCard && <ConsumeCard id={curId} onClose={() => setShowCard(false)} />} */}
+      {showOrderTime && <OrderTime id={curId} onClose={() => setShowOrderTime(false)} />}
+      {showCard && <ConsumeCard id={curId} onClose={() => setShowCard(false)} />}
     </PageContainer>
   );
 };

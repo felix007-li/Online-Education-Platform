@@ -9,7 +9,7 @@ export const useCourses = (
   pageSize = DEFAULT_PAGE_SIZE,
 ) => {
   const { loading, data, refetch } = useQuery<TCoursesQuery>(GET_COURSES, {
-    // skip: true,
+    skip: true,
     variables: {
       page: {
         pageNum,

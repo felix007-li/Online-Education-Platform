@@ -4,18 +4,18 @@ import { Button, Space } from 'antd';
 
 interface IProps {
   onEditHandler: (id: string) => void
-  // onOrderTimeHandler: (id: string) => void
-  // onCardHandler: (id: string) => void
+  onOrderTimeHandler: (id: string) => void
+  onCardHandler: (id: string) => void
 }
 
 export const getColumns: ({
   onEditHandler,
-  // onOrderTimeHandler,
-  // onCardHandler,
+  onOrderTimeHandler,
+  onCardHandler,
 }: IProps) => ProColumns<ICourse, 'text'>[] = ({
   onEditHandler,
-  // onOrderTimeHandler,
-  // onCardHandler,
+  onOrderTimeHandler,
+  onCardHandler,
 }) => [
   {
     title: 'Course Title',
@@ -39,7 +39,7 @@ export const getColumns: ({
     valueType: 'option', 
     dataIndex: 'id',
     align: 'center',
-    width: 300,
+    width: 420,
     render: (text, entity) => (
       <Space>
         <Button
@@ -49,7 +49,7 @@ export const getColumns: ({
         >
           Edit
         </Button>
-        {/* <Button
+        <Button
           key="orderTime"
           type="link"
           onClick={() => onOrderTimeHandler(entity.id)}
@@ -61,8 +61,8 @@ export const getColumns: ({
           type="link"
           onClick={() => onCardHandler(entity.id)}
         >
-          Associated consumption card
-        </Button> */}
+          Associated Consumption Card
+        </Button>
       </Space>
     ),
   },
