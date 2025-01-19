@@ -28,14 +28,14 @@ const Layout = () => {
     nav('/login');
   };
 
-  const goToOrg = () => {
-    go(ROUTE_KEY.ORG);
-  };
+  // const goToOrg = () => {
+  //   go(ROUTE_KEY.ORG);
+  // };
 
   return (
     <ProLayout
       layout="mix"
-      siderWidth={220}
+      siderWidth={240}
       avatarProps={{
         src: store.avatar || null,
         title: store.name,

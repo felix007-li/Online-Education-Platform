@@ -5,7 +5,7 @@ import './index.css';
 import { ApolloProvider } from '@apollo/client';
 import { ConfigProvider } from 'antd';
 import enUS from 'antd/locale/en_US';
-import zhCN from 'antd/locale/zh_CN';
+// import zhCN from 'antd/locale/zh_CN';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { client } from './utils/apollo';
 import { routes } from './routes/menus';

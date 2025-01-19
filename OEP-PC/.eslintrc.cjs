@@ -15,7 +15,8 @@ module.exports = {
       'jsx-a11y/no-static-element-interactions': 0,
       'indent': 'off',
       "react/jsx-indent": "off",
-      "react/jsx-indent-props": "off"
+      "react/jsx-indent-props": "off",
+      'server.hmr.overlay': 0
     },
     parser: require.resolve('@typescript-eslint/parser'),
     parserOptions: {

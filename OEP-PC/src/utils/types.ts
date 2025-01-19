@@ -50,6 +50,15 @@ export interface IStudent {
   account: string;
 }
 
+export interface ICard {
+  id: string;
+  name: string;
+  type: string;
+  time: number;
+  validityDay: number;
+  course?: ICourse;
+}
+
 export type TStudentQuery = { [key: string]: { __typename?: 'Query', data: IStudent[], page: IPage } };
 
 export type TBaseOrganization = Partial<IOrganization>;
