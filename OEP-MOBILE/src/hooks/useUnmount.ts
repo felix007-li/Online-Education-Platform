@@ -1,0 +1,12 @@
+import { useEffect } from 'react';
+import useLatest from './useLatest';
+
+/**
+ * run when component was unloaded
+ */
+const useUnmount = (fn: () => void) => {
+  const fnRef = useLatest(fn);
+  useEffect(() => () => fnRef.current(), []);
+};
+
+export default useUnmount;
