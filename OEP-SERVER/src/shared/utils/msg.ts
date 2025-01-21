@@ -12,17 +12,10 @@ import { getEnvConfig } from ".";
 dotenv.config({
   path: getEnvConfig(),
 });
-// const conf = new OpenApi.Config({
-//   accessKeyId: process.env.ACCESS_KEY,
-//   accessKeySecret: process.env.ACCESS_KEY_SECRET,
-// });
 
 const conf = new $OpenApi.Config({
   accessKeyId: process.env.ACCESS_KEY,
   accessKeySecret: process.env.ACCESS_KEY_SECRET,
-  // accessKeyId: Env.getEnv("ACCESS_KEY_ID"),
-  // accessKeyId: "LTAI5tShGLDNvyFwZLpoP9YB",
-  // accessKeySecret: "t2r87RjsNQDQC0PhGaLlZpYOF5D0U5",
 });
 // cloud domain
 conf.endpoint = "dysmsapi.ap-southeast-1.aliyuncs.com";
