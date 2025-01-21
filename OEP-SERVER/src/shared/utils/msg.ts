@@ -12,10 +12,6 @@ import { getEnvConfig } from ".";
 dotenv.config({
   path: getEnvConfig(),
 });
-// const conf = new OpenApi.Config({
-//   accessKeyId: process.env.ACCESS_KEY,
-//   accessKeySecret: process.env.ACCESS_KEY_SECRET,
-// });
 
 const conf = new $OpenApi.Config({
   accessKeyId: process.env.ACCESS_KEY,
