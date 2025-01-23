@@ -24,7 +24,7 @@ const ConsumeCard = ({
     del(key, refetch);
   };
   const onSaveHandler = (d: ICard) => {
-    edit(d.id, id, {
+    edit(d.id, id, { 
       name: d.name,
       type: d.type,
       time: d.time,

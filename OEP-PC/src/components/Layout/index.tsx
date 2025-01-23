@@ -1,13 +1,14 @@
 /* eslint-disable import/extensions */
 import { MenuDataItem, ProLayout } from '@ant-design/pro-components';
 import { Link, useNavigate, useOutlet } from 'react-router-dom';
-import { Space } from 'antd';
-import { LogoutOutlined } from '@ant-design/icons';
+import { Space, Tooltip } from 'antd';
+import { LogoutOutlined, ShopOutlined } from '@ant-design/icons';
 import { useUserContext } from '@/hooks/userHooks';
 import { AUTH_TOKEN } from '@/utils/constants';
 import { ROUTE_KEY, routes } from '@/routes/menus';
-import { useGoTo } from '@/hooks';
+import { useGoTo, useIsOrgRoute } from '@/hooks';
 import styles from './index.module.less';
+import OrgSelect from '../OrgSelect';
 
 const menuItemRender = (
   item: MenuDataItem,
@@ -19,6 +20,7 @@ const menuItemRender = (
 const Layout = () => {
   const outlet = useOutlet();
   const { store } = useUserContext();
+  const isOrg = useIsOrgRoute();
   const { go } = useGoTo();
   const nav = useNavigate();
 
@@ -28,9 +30,9 @@ const Layout = () => {
     nav('/login');
   };
 
-  // const goToOrg = () => {
-  //   go(ROUTE_KEY.ORG);
-  // };
+  const goToOrg = () => {
+    go(ROUTE_KEY.ORG);
+  };
 
   return (
     <ProLayout
@@ -56,6 +58,12 @@ const Layout = () => {
         path: '/',
         routes,
       }}
+      actionsRender={() => [
+        !isOrg && <OrgSelect />,
+        <Tooltip title="Store management">
+          <ShopOutlined onClick={goToOrg} />
+        </Tooltip>,
+      ]}
       menuItemRender={menuItemRender}
     >
       <div key={store.currentOrg}>
