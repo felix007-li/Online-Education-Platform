@@ -4,6 +4,7 @@ import { IsNotEmpty } from 'class-validator';
 import { CommonEntity } from '@/common/entities/common.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Card } from '@/modules/card/models/card.entity';
+import { Product } from '@/modules/product/models/product.entity';
 
 /**
  * Organization
@@ -100,4 +101,7 @@ export class Organization extends CommonEntity {
 
   @OneToMany(() => Card, (card) => card.org)
   cards: Card[];
+
+  @OneToMany(() => Product, (product) => product.org)
+  products: Product[];
 }
