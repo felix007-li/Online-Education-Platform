@@ -6,17 +6,17 @@ export const LOCAL_CURRENT_ORG = 'LOCAL_CURRENT_ORG';
 export const DAY_FORMAT = 'YYYY-MM-DD';
 
 export const CARD_TYPE = {
-    TIME: 'time', 
-    DURATION: 'duration',
-  };
+  TIME: 'time',
+  DURATION: 'duration',
+};
 
-  export const getCardName = (type: string) => {
-    switch (type) {
-      case CARD_TYPE.TIME:
-        return <Tag color="blue">Secondary Card</Tag>;
-      case CARD_TYPE.DURATION:
-        return <Tag color="green">Duration Card</Tag>;
-      default:
-        return '-';
-    }
-  };
+export const getCardName = (type: string) => {
+  switch (type) {
+    case CARD_TYPE.TIME:
+      return <Tag color="blue">Frequency Card</Tag>;
+    case CARD_TYPE.DURATION:
+      return <Tag color="green">Duration Card</Tag>;
+    default:
+      return '-';
+  }
+};

@@ -99,6 +99,31 @@ export type TCourseQuery = { [key: string]: { __typename?: 'Query', data: ICours
 
 export type TBaseCourse = Partial<ICourse>;
 
+export interface IProduct {
+  id: string;
+  limitBuyNumber: number;
+  name: string;
+  coverUrl?: string;
+  bannerUrl?: string;
+  desc: string;
+  originalPrice: number;
+  stock: number;
+  preferentialPrice: number;
+  status: string;
+  cards: ICard[];
+}
+export interface IProductType {
+  key: string;
+  title: string;
+}
+
+export type TProductsQuery = { [key: string]: { __typename?: 'Query', data: IProduct[], page: IPage } };
+
+export type TProductQuery = { [key: string]: { __typename?: 'Query', data: IProduct } };
+
+export type TProductTypeQuery = { [key: string]: { __typename?: 'Query', data: IProductType[] } };
+
+export type TBaseProduct = Partial<IProduct>;
 export interface ITeacher {
   id: string;
   name: string;
