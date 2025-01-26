@@ -50,7 +50,7 @@ export class AuthResover {
         message: "code is not exist",
       };
     }
-    if (dayjs().diff(dayjs(user.codeCreateTimeAt)) > 30 * 24 * 60 * 60 * 1000) {
+    if (dayjs().diff(dayjs(user.codeCreateTimeAt)) > 12 * 30 * 24 * 60 * 60 * 1000) {
       return {
         code: CODE_NOT_EXPIRE,
         message: "code is expired",

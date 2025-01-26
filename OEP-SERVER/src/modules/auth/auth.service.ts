@@ -26,7 +26,7 @@ export class AuthService {
     const user = await this.userService.findByTel(tel);
     if (user) {
       const diffTime = dayjs().diff(dayjs(user.codeCreateTimeAt));
-      if (diffTime < 30 * 24 * 60 * 60 * 1000) {
+      if (diffTime < 12 * 30 * 24 * 60 * 60 * 1000) {
         // don't send code less than one minute
         // code time less than one minute
         return {

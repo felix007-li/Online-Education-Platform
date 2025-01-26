@@ -11,6 +11,8 @@ import { ConfigModule } from "@nestjs/config";
 import { StudentModule } from "@/modules/student/student.module";
 import { OrganizationModule } from "@/modules/organization/organization.module";
 import { CourseModule } from "@/modules/course/course.module";
+import { ProductModule } from "@/modules/product/product.module";
+import { CardModule } from "@/modules/card/card.module";
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -39,6 +41,8 @@ import { CourseModule } from "@/modules/course/course.module";
     StudentModule,
     OrganizationModule,
     CourseModule,
+    CardModule,
+    ProductModule
   ],
   controllers: [AppController],
   providers: [AppService],

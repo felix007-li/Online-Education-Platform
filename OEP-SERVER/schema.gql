@@ -242,6 +242,126 @@ type CourseResults {
   page: Page
 }
 
+type CardType {
+  """id"""
+  id: String!
+
+  """Name"""
+  name: String!
+
+  """
+  Type of card 
+       FREQUENCY = "time",
+      DURATION = "duration"
+  """
+  type: String!
+
+  """Number of classes"""
+  time: Float!
+
+  """Validity period (days)"""
+  validityDay: Float!
+
+  """Course"""
+  course: CourseType!
+}
+
+type ProductType {
+  id: String!
+  createdAt: DateTime!
+  createdBy: String
+  updatedAt: DateTime
+  updatedBy: String
+  deletedAt: DateTime
+  deletedBy: String
+
+  """name"""
+  name: String
+
+  """description"""
+  desc: String
+
+  """status"""
+  status: String
+
+  """distance"""
+  distance: String!
+
+  """type"""
+  type: String
+
+  """stock"""
+  stock: Float!
+
+  """current stock"""
+  curStock: Float!
+
+  """number of purchases"""
+  buyNumber: Float!
+
+  """limit number of purchases"""
+  limitBuyNumber: Float!
+
+  """cover image"""
+  coverUrl: String!
+
+  """banner image"""
+  bannerUrl: String!
+
+  """original price"""
+  originalPrice: Float!
+
+  """preferential price"""
+  preferentialPrice: Float!
+
+  """organization"""
+  org: OrganizationType!
+
+  """cards"""
+  cards: [CardType!]
+}
+
+type ProductTypeType {
+  """key"""
+  key: String!
+
+  """title"""
+  title: String!
+}
+
+type ProductResult {
+  code: Int!
+  message: String!
+  data: ProductType
+}
+
+type ProductResults {
+  code: Int!
+  message: String!
+  data: [ProductType!]
+  page: Page
+}
+
+type ProductTypesResults {
+  code: Int!
+  message: String!
+  data: [ProductTypeType!]
+  page: Page
+}
+
+type CardResult {
+  code: Int!
+  message: String!
+  data: CardType
+}
+
+type CardResults {
+  code: Int!
+  message: String!
+  data: [CardType!]
+  page: Page
+}
+
 type Query {
   """Query user info by id"""
   getUserInfo: UserType!
@@ -257,6 +377,12 @@ type Query {
   getOrganizations(page: PageInput!, name: String): OrganizationResults!
   getCourseInfo(id: String!): CourseResult!
   getCourses(page: PageInput!, name: String): CourseResults!
+  getCardInfo(id: String!): CardResult!
+  getCards(courseId: String!, name: String): CardResults!
+  getProductTypes: ProductTypesResults!
+  getProductInfo(id: String!): ProductResult!
+  getProducts(page: PageInput!, name: String): ProductResults!
+  getProductsByOrgIdForH5(orgId: String!): ProductResults!
 }
 
 input PageInput {
@@ -284,6 +410,10 @@ type Mutation {
   deleteOrganization(id: String!): Result!
   commitCourseInfo(params: PartialCourseInput!, id: String): CourseResult!
   deleteCourse(id: String!): Result!
+  commitCardInfo(params: CardInput!, courseId: String!, id: String): CardResult!
+  deleteCard(id: String!): Result!
+  commitProductInfo(params: PartialProductInput!, id: String): ProductResult!
+  deleteProduct(id: String!): Result!
 }
 
 input UserInput {
@@ -410,4 +540,53 @@ input OrderTimeInput {
 
   """key"""
   key: Float!
+}
+
+input CardInput {
+  """Name"""
+  name: String!
+
+  """Type of Card Frequency：time Duration：duration"""
+  type: String!
+
+  """Number of classes"""
+  time: Float
+
+  """Validity period (days)"""
+  validityDay: Float!
+}
+
+input PartialProductInput {
+  """name"""
+  name: String
+
+  """description"""
+  desc: String
+
+  """status"""
+  status: String
+
+  """type"""
+  type: String
+
+  """stock"""
+  stock: Float
+
+  """limit number of purchases"""
+  limitBuyNumber: Float
+
+  """cover image"""
+  coverUrl: String
+
+  """banner image"""
+  bannerUrl: String
+
+  """original price"""
+  originalPrice: Float
+
+  """preferential price"""
+  preferentialPrice: Float
+
+  """cards"""
+  cards: [String!]
 }
