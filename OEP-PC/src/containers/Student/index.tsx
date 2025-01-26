@@ -25,7 +25,7 @@ const Student = () => {
       <PageContainer
         loading={loading}
         header={{
-          title: '学员管理',
+          title: 'Student management',
         }}
       >
         <Card>

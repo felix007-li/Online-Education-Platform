@@ -56,7 +56,6 @@ const EditCourse = ({
 
   const onSubmitHandler = async () => {
     const values = await form.validateFields();
-    console.log("Edit form value::", values)
     if (values) {
       edit(id, {
         ...values,

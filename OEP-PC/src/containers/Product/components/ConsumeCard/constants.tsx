@@ -4,7 +4,7 @@ import { Popconfirm, Space } from 'antd';
 
 export const getColumns = (onDeleteHandler: Function): ProColumns[] => [
   {
-    title: 'Serial Number',
+    title: 'Number',
     dataIndex: 'key',
     width: 50,
     editable: false,
@@ -12,7 +12,7 @@ export const getColumns = (onDeleteHandler: Function): ProColumns[] => [
     render: (d, r, index) => index + 1,
   },
   {
-    title: 'Title',
+    title: 'Name',
     dataIndex: 'name',
     align: 'center',
   },
@@ -27,16 +27,16 @@ export const getColumns = (onDeleteHandler: Function): ProColumns[] => [
     title: 'Type',
     dataIndex: 'type',
     valueType: 'select',
-    width: 120,
+    width: 130,
     align: 'center',
     request: async () => [
       {
         value: CARD_TYPE.TIME,
-        label: 'Frequency Card',
+        label: 'Frequency card',
       },
       {
         value: CARD_TYPE.DURATION,
-        label: 'Duration Card',
+        label: 'Duration card',
       },
     ],
   },
@@ -64,7 +64,7 @@ export const getColumns = (onDeleteHandler: Function): ProColumns[] => [
         </a>
         <Popconfirm
           title="Alert"
-          description="Are you sure you want to delete it?"
+          description="Are you sure you want to delete this card?"
           onConfirm={() => onDeleteHandler(record.id)}
         >
           <a
