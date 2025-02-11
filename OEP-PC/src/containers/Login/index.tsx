@@ -125,7 +125,6 @@ const Login = () => {
                   }}
                 >
                   <ProFormCheckbox noStyle name="autoLogin">
-                    {/* 自动登录（万能验证码 1024） */}
                     I Agree to Privacy Policy
                   </ProFormCheckbox>
                 </div>

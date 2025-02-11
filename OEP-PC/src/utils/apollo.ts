@@ -3,6 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 import { message } from 'antd';
 import { onError } from '@apollo/client/link/error'; // import onError
 import { AUTH_TOKEN } from './constants';
+import { currentOrg } from '.';
 
 const uri = '/graphql';
 
@@ -16,7 +17,7 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       Authorization: token ? `Bearer ${token}` : '',
-      orgId: '',
+      orgId: currentOrg()?.value,
     },
   };
 });
