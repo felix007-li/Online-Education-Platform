@@ -110,7 +110,7 @@ export const getColumns: (props: IProps) => ProColumns<IProduct, 'text'>[] = ({
               }}
               onClick={() => onStatusChangeHandler(entity.id, PRODUCT_STATUS.LIST)}
             >
-              Putaway
+              List
             </a>
           )
           : (
@@ -121,7 +121,7 @@ export const getColumns: (props: IProps) => ProColumns<IProduct, 'text'>[] = ({
               }}
               onClick={() => onStatusChangeHandler(entity.id, PRODUCT_STATUS.UN_LIST)}
             >
-              Remove
+              UnList
             </a>
           )}
         <a
