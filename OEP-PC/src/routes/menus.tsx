@@ -1,4 +1,4 @@
-import { HomeOutlined, PicRightOutlined, ShopOutlined, TeamOutlined } from '@ant-design/icons';
+import { GiftOutlined, HomeOutlined, PicRightOutlined, ShopOutlined, TeamOutlined } from '@ant-design/icons';
 
 interface IRoute {
   path: string;
@@ -35,7 +35,7 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
   [ROUTE_KEY.ORG]: {
     path: 'org',
     name: 'Stores management',
-    hideInMenu: false,
+    hideInMenu: true,
     icon: <ShopOutlined />,
   },
   [ROUTE_KEY.COURSE]: {
@@ -48,13 +48,17 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
     name: 'Students Management',
     icon: <TeamOutlined />,
   },
+  [ROUTE_KEY.PRODUCT]: {
+    path: 'product',
+    name: 'Products Management',
+    icon: <GiftOutlined />,
+  },
   [ROUTE_KEY.PAGE_404]:
     {
       path: '*',
       hideInMenu: true,
       name: '404',
     },
-  
 };
 
 export const routes = Object.keys(ROUTE_CONFIG).map((key) => ({ ...ROUTE_CONFIG[key], key }));
