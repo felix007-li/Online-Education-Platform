@@ -405,6 +405,12 @@ type Mutation {
 
   """Login"""
   login(tel: String!, code: String!): Result!
+
+  """Student login"""
+  studentLogin(account: String!, password: String!): Result!
+
+  """Student Register"""
+  studentRegister(account: String!, password: String!): Result!
   commitStudentInfo(params: StudentInput!): StudentResult!
   commitOrganization(params: OrganizationInput!, id: String): OrganizationResult!
   deleteOrganization(id: String!): Result!

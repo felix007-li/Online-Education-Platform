@@ -50,7 +50,7 @@ export class AuthService {
         sendSmsRequest,
         runtime
       );
-      
+
       if (sendRes.body.responseCode !== "OK") {
         return {
           code: CODE_SEND_ERROR,

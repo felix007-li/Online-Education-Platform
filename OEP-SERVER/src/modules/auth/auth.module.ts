@@ -7,6 +7,8 @@ import { JwtModule } from "@nestjs/jwt";
 import { AuthResover } from "./auth.resolver";
 import { JwtStrategy } from "./jwt.strategy";
 import { ConfigModule, ConfigService } from "@nestjs/config";
+import { Student } from "../student/models/student.entity";
+import { StudentService } from "../student/student.service";
 // import * as dotenv from "dotenv";
 // dotenv.config();
 
@@ -29,7 +31,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
       },
     }),
     // ConfigModule,
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, Student]),
   ],
   providers: [
     JwtStrategy,
@@ -37,6 +39,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
     ConsoleLogger,
     AuthService,
     AuthResover,
+    StudentService,
   ],
   exports: [AuthService],
 })
