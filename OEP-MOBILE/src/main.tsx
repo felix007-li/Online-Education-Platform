@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { ConfigProvider } from 'antd-mobile';
 import { client } from './utils/apollo.js';
-import Login from './containers/Login/index.js';
+import Login from './containers/Login';
+import Register from './containers/Register';
+import './theme.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ConfigProvider>
@@ -12,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </ApolloProvider>
