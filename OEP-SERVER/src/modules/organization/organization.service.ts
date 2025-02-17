@@ -42,7 +42,7 @@ export class OrganizationService {
     if (!existEntity) {
       return false;
     }
-    Object.assign(existEntity, entity);  // Merge two objects
+    Object.assign(existEntity, entity); // Merge two objects
     const res = await this.organizationRepository.save(existEntity);
     if (res) {
       return true;
@@ -75,7 +75,7 @@ export class OrganizationService {
       deletedBy: userId, // delete by who
     });
     if (res1) {
-      const res = await this.organizationRepository.softDelete(id); 
+      const res = await this.organizationRepository.softDelete(id);
       if (res.affected > 0) {
         return true;
       }

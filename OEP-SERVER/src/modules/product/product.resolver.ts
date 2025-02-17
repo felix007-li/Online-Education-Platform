@@ -180,64 +180,64 @@ export class ProductResolver {
     };
   }
 
-  // @Query(() => ProductResults)
-  // async getProductsForH5(
-  //   @Args("page") page: PageInput,
-  //   @Args("latitude") latitude: number, // latitude
-  //   @Args("longitude") longitude: number, // longitude
-  //   @Args("type", { nullable: true }) type?: string,
-  //   @Args("name", { nullable: true }) name?: string
-  // ): Promise<ProductResults> {
-  //   const { pageNum, pageSize } = page;
-  //   const where: FindOptionsWhere<Product> = {
-  //     status: ProductStatus.LIST,
-  //   };
-  //   if (name) {
-  //     where.name = name;
-  //   }
-  //   if (type) {
-  //     where.type = type;
-  //   }
-  //   const { entities, raw } =
-  //     await this.productService.findProductsOrderByDistance({
-  //       start: (pageNum - 1) * pageSize,
-  //       length: pageSize,
-  //       where,
-  //       position: {
-  //         latitude,
-  //         longitude,
-  //       },
-  //     });
-  //   const total = await this.productService.getCount({
-  //     where,
-  //   });
-  //   return {
-  //     code: SUCCESS,
-  //     data: entities.map((item, index) => {
-  //       const distance = raw[index].distance;
-  //       let distanceLabel = ">5km";
-  //       if (distance < 1000 && distance > 0) {
-  //         distanceLabel = `${parseInt(distance.toString(), 10)}m`;
-  //       }
-  //       if (distance >= 1000) {
-  //         distanceLabel = `${parseInt((distance / 100).toString(), 10) / 10}km`;
-  //       }
-  //       if (distance > 5000) {
-  //         distanceLabel = ">5km";
-  //       }
-  //       return {
-  //         ...item,
-  //         distance: distanceLabel,
-  //       };
-  //     }),
-  //     page: {
-  //       pageNum,
-  //       pageSize,
-  //       total,
-  //     },
-  //     message: "Get products successfully",
-  //   };
-  // }
+  @Query(() => ProductResults)
+  async getProductsForH5(
+    @Args("page") page: PageInput,
+    @Args("latitude") latitude: number, // latitude
+    @Args("longitude") longitude: number, // longitude
+    @Args("type", { nullable: true }) type?: string,
+    @Args("name", { nullable: true }) name?: string
+  ): Promise<ProductResults> {
+    const { pageNum, pageSize } = page;
+    const where: FindOptionsWhere<Product> = {
+      status: ProductStatus.LIST,
+    };
+    if (name) {
+      where.name = name;
+    }
+    if (type) {
+      where.type = type;
+    }
+    const { entities, raw } =
+      await this.productService.findProductsOrderByDistance({
+        start: (pageNum - 1) * pageSize,
+        length: pageSize,
+        where,
+        position: {
+          latitude,
+          longitude,
+        },
+      });
+    const total = await this.productService.getCount({
+      where,
+    });
+    return {
+      code: SUCCESS,
+      data: entities.map((item, index) => {
+        const distance = raw[index].distance;
+        let distanceLabel = ">5km";
+        if (distance < 1000 && distance > 0) {
+          distanceLabel = `${parseInt(distance.toString(), 10)}m`;
+        }
+        if (distance >= 1000) {
+          distanceLabel = `${parseInt((distance / 100).toString(), 10) / 10}km`;
+        }
+        if (distance > 5000) {
+          distanceLabel = ">5km";
+        }
+        return {
+          ...item,
+          distance: distanceLabel,
+        };
+      }),
+      page: {
+        pageNum,
+        pageSize,
+        total,
+      },
+      message: "Get products successfully",
+    };
+  }
 
   @Query(() => ProductResults)
   async getProductsByOrgIdForH5(@Args("orgId") orgId: string) {

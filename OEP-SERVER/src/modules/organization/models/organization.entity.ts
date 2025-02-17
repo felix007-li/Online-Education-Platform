@@ -64,12 +64,14 @@ export class Organization extends CommonEntity {
   address: string;
 
   @Column({
+    type: 'float',
     comment: 'longitude',
     nullable: true,
   })
   longitude: string;
 
   @Column({
+    type: 'float',
     comment: 'latitude',
     nullable: true,
   })

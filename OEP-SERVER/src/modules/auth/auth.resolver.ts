@@ -16,7 +16,6 @@ import { JwtService } from "@nestjs/jwt";
 import { StudentService } from "../student/student.service";
 import * as md5 from "md5";
 import { accountAndPwdValidate } from "@/shared/utils";
-import { log } from "console";
 
 @Resolver()
 export class AuthResover {
@@ -134,7 +133,6 @@ export class AuthResover {
       account,
       password: md5(password),
     });
-    console.log("register info::", res);
     if (res) {
       return {
         code: SUCCESS,

@@ -79,7 +79,7 @@ export class OrganizationResolver {
         };
       }
     }
-    const res = await this.organizationService.create({ // if no id，then create
+    const res = await this.organizationService.create({
       ...params,
       createdBy: userId,
     });
