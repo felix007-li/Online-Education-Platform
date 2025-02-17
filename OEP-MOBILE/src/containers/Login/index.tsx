@@ -13,8 +13,7 @@ import style from './index.module.less';
 import { STUDENT_LOGIN } from '@/graphql/user';
 import { AUTH_TOKEN } from '@/utils/constants';
 import { showFail, showSuccess } from '@/utils';
-import { useUserContext } from '@/hooks/useHooks';
-
+import { useUserContext } from '@/hooks/userHooks';
 interface IValue {
   password: string;
   account: string;
@@ -24,7 +23,6 @@ interface IValue {
 * login page
 */
 const Login = () => {
-  const uploadHandler = useUploadOSS();
   const [visible, setVisible] = useState(false);
   const { store } = useUserContext();
   const nav = useNavigate();
@@ -37,9 +35,10 @@ const Login = () => {
         account: values.account,
       },
     });
+    console.log('login res', res);
     if (res.data.studentLogin.code === 200) {
       showSuccess(res.data.studentLogin.message);
-      store.refetchHandler();
+      // store.refetchHandler();
       localStorage.setItem(AUTH_TOKEN, res.data.studentLogin.data);
       nav('/');
       return;

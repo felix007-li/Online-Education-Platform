@@ -2,6 +2,7 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import postCssPxToViewport from 'postcss-px-to-viewport';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,4 +24,25 @@ export default defineConfig({
       },
     ],
   },
+  // css: {
+  //   postcss: {
+  //     plugins: [
+  //       postCssPxToViewport({
+  //         unitToConvert: 'px',
+  //         viewportWidth: 390,
+  //         unitPrecision: 3,
+  //         propList: ['*'],
+  //         viewportUnit: 'vw',
+  //         fontViewportUnit: 'vw',
+  //         selectorBlackList: ['ignore-'],
+  //         minPixelValue: 1,
+  //         mediaQuery: true,
+  //         replace: true,
+  //         // exclude: [/node_modules/],
+  //         exclude: [],
+  //         landscape: false,
+  //       }),
+  //     ],
+  //   },
+  // },
 });
