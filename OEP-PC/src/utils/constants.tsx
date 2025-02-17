@@ -20,3 +20,7 @@ export const getCardName = (type: string) => {
       return '-';
   }
 };
+
+export const SCHEDULE_STATUS = {
+  CANCEL: 'CANCEL',
+};

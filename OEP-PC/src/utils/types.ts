@@ -26,8 +26,8 @@ export interface IOrganization {
   description?: string;
   address?: string;
   tel?: string;
-  longitude?: string;
-  latitude?: string;
+  longitude?: number;
+  latitude?: number;
   identityCardBackImg:string
   identityCardFrontImg:string
   businessLicense?:string
@@ -139,3 +139,21 @@ export interface ITeacher {
 export type TBaseTeacher = Partial<ITeacher>;
 export type TTeachersQuery = { [key: string]: { __typename?: 'Query', data: ITeacher[], page: IPage } };
 export type TTeacherQuery = { [key: string]: { __typename?: 'Query', data: ITeacher } };
+
+export interface IScheduleRecord {
+  id: string;
+  status: string;
+  student: IStudent;
+}
+export interface ISchedule {
+  id: string;
+  schoolDay: string;
+  startTime: string;
+  endTime: string;
+  limitNumber: number; // 限制上课人数
+  course: ICourse;
+  org: IOrganization;
+  scheduleRecords: IScheduleRecord[];
+}
+
+export type TSchedulesQuery = { [key: string]: { __typename?: 'Query', data: ISchedule[] } };

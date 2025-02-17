@@ -35,7 +35,7 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
   [ROUTE_KEY.ORG]: {
     path: 'org',
     name: 'Stores management',
-    hideInMenu: true,
+    hideInMenu: false,
     icon: <ShopOutlined />,
   },
   [ROUTE_KEY.COURSE]: {
